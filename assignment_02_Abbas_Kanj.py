@@ -1,99 +1,63 @@
-''' 
- FCS CYCLE 46
- Assignment 1
- Due Date: July 8, 10am
- Name: Abbas kanj
-----------------------------
- EX: 1
---------
-num = int(input("Enter a number: "))    
-factorial = 1    
-if num < 0:    
-   print("Error")    
-elif num == 0:    
-   print("The factorial of 0 is 1")    
-else:    
-   for i in range(1,num + 1):    
-       factorial = factorial*i    
-   print(factorial) 
---------------------------------------------------
- EX: 2
---------
-n=int(input("Enter an integer:"))
-lst = []
-for i in range(1,n+1):
-    if(n%i==0):
-        lst.append(i)
-print(lst)
----------------------------------------------------
- EX: 3
--------
-def reverseString(str):  
-    str1 = "" 
-    for i in str:  
-        str1 = i + str1  
-    return str1
-string = str(input())
-print(reverseString(string))
-----------------------------------------------------
- EX: 4
--------
-lst1 = []
-print("Enter your integers: (Type -1 to exit)")
-integer = int
-while integer != -1 :
-    integer = int(input())
-    if integer % 2 == 0:
-        lst1.append(integer)
-print(lst1)
------------------------------------------------------
- EX: 5
--------
-import re
+# FCS CYCLE 46
+# Assignment 2
+# Due Date: July 15, 10am
+# Name: Abbas kanj
+# ---------------------------
+def main():
+    displaymenu()
+    choice = int(input("Please select one of the options: "))
+    while (choice != 4):
+        try:
+            if (choice == 1):
+                countDigits(num)
+                num = int(input("Enter a number: "))
+                print(countDigits(num))
+            elif (choice == 2):
+                numbers = findMax()
+                if numbers:
+                    max_num = numbers[0]
 
-def check_strong_password(password):
-    if len(password) < 8:
-        return False
-    if not re.search(r'[A-Z]', password):
-        return False
-    if not re.search(r'[a-z]', password):
-        return False
-    if not re.search(r'\d', password):
-        return False
-    if not re.search(r'[$#?!]', password):
-        return False
-    return True
+                    for num in numbers[1:]:
+                        if num > max_num:
+                            max_num = num
+                    print("Maximum number is: ", max_num)
+                else:
+                    print("No numbers entered.")
+            elif (choice == 3):
+                countTags()
+        except:
+            print("This is an invalid option")
+#----------------------------------------------------------
+def displaymenu():
+    print("1- Count Digits\n" + "2- Find Max\n" + "3- Count Tags\n" + "4- Exit\n")
+#----------------------------------------------------------
+def countDigits(num):
+    if num == 0:
+      return 0
+    else:
+      return 1 + countDigits(num // 10)
+#----------------------------------------------------------
+def findMax():
+    num1 = input("Enter your number(s) here (press enter to exit): ")
+    if num1 == "":
+        return []
+    return [int(num1)] + findMax()
+#----------------------------------------------------------
+def countTags(html, tag):
+    start_tag = "<" + tag
+    end_tag = "</" + tag + ">"
+    count = 0
 
-password = input("Enter a password: ")
-if check_strong_password(password):
-    print('Strong password')
-else:
-    print('Weak password')
----------------------------------------------------
+    start_index = html.find(start_tag)
 
+    while start_index != -1:
+        end_index = html.find(end_tag, start_index)
+        if end_index == -1:
+            break
 
+        count += 1
+        start_index = html.find(start_tag, end_index + len(end_tag))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
+    return count
+#----------------------------------------------------------
+main()
