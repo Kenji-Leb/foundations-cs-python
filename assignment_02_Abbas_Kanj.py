@@ -9,14 +9,12 @@ def main():
     while (choice != 4):
         try:
             if (choice == 1):
-                countDigits(num)
                 num = int(input("Enter a number: "))
                 print(countDigits(num))
             elif (choice == 2):
                 numbers = findMax()
                 if numbers:
                     max_num = numbers[0]
-
                     for num in numbers[1:]:
                         if num > max_num:
                             max_num = num
@@ -32,6 +30,7 @@ def displaymenu():
     print("1- Count Digits\n" + "2- Find Max\n" + "3- Count Tags\n" + "4- Exit\n")
 #----------------------------------------------------------
 def countDigits(num):
+    
     if num == 0:
       return 0
     else:
