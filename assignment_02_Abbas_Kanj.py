@@ -23,6 +23,28 @@ def main():
                     print("No numbers entered.")
             elif (choice == 3):
                 countTags()
+                html_code ='''
+                    <html>
+                    <head>
+                    <title>My Website</title>
+                    </head>
+                    <body>
+                    <h1>Welcome to my website!</h1>
+                    <p>Here you'll find information about me and my hobbies.</p>
+                    <h2>Hobbies</h2>
+                    <ul>
+                    <li>Playing guitar</li>
+                    <li>Reading books</li>
+                    <li>Traveling</li>
+                    <li>Writing cool h1 tags</li>
+                    </ul>
+                    </body>
+                    </html>
+                    '''
+                tag_name = "h1"
+                tag_count = countTags(html_code, tag_name)
+                print(f"Number of occurrences of <{tag_name}>: {tag_count}")
+                
         except:
             print("This is an invalid option")
 #----------------------------------------------------------
