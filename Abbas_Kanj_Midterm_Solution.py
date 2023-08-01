@@ -31,7 +31,7 @@
 # updated_text_file = []
 # checking_lines = set() 
 
-# with open(r"C:\Users\abbas\OneDrive\Desktop\tickets.txt") as file:
+# with open(r"tickets.txt") as file:
 #     for line in file:
 #         if line not in checking_lines:  
 #             if check_line(line):
@@ -200,7 +200,7 @@
 #     for line in updated_text_file:
 #         print(line)
 
-#     file_path = r"C:\Users\abbas\OneDrive\Desktop\tickets.txt"
+#     file_path = r"tickets.txt"
 #     with open(file_path, "w") as file:
 #         for line in updated_text_file:
 #             file.write(line + "\n")
